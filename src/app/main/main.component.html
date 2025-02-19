@@ -1,0 +1,78 @@
+<div class="change">
+    <label class="input">
+      Seleccionar Imagen
+      <input type="file" required (change)="onImageChange($event)">
+    </label>
+    <img *ngIf="datos.imageUrl" [src]="datos.imageUrl" alt="Imagen seleccionada" class="img">
+  </div>
+  
+
+<div class="datos">
+    <div class="input-row">
+      <label class="input-titulo">
+        <input type="text" [(ngModel)]="datos.titulo" placeholder=" " />
+        <span>Titulo</span>
+      </label>
+      <label class="input-container">
+        <input type="text" [(ngModel)]="datos.precio" placeholder=" " />
+        <span>Precio</span>
+      </label>
+      <label class="input-container">
+        <input type="number" [(ngModel)]="datos.cantidad" placeholder=" "  />
+        <span>0</span>
+      </label>
+    </div>
+  </div>
+  
+  <div>
+    <label class="input-desc">
+      <input 
+        type="text" [(ngModel)]="datos.descripcion" placeholder=" " />
+      <span>Descripción</span>
+    </label>  
+  </div>
+
+<div class="btn">
+    <button (click)="cancelarProducto()" class="btn-container">Cancelar</button>
+    <button (click)="agregarProducto()" class="btn-container"> Agregar</button>
+</div>
+  
+
+<div>
+    <h1 class="games">Juegos Seleccionados</h1>
+</div>
+  
+<hr>
+    
+<table *ngIf="productos.length > 0">
+
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>
+            <img [src]="producto.imageUrl" alt="Imagen Producto" class="img-tabla">
+        </td>
+
+        <td class="celda-informacion">
+            <div class="info-tabla">
+              <div class="titulo">{{ producto.titulo }}</div>
+              <div class="descripcion">{{ producto.descripcion }}</div>
+            </div>
+          </td>
+
+
+
+        <td>Cantidad: 
+            <label class="input-tabla">
+                <input type="text" [(ngModel)]="datos.cantidad" placeholder="{{ producto.cantidad }}">
+            </label>
+        </td>
+        <td>
+            <label class="input-tabla">
+                <input type="text" [(ngModel)]="datos.precio" placeholder="${{ producto.precio }}">
+            </label>
+        </td>
+        <label>Disponible</label>
+ 
+      </tr>
+    </tbody>
+  </table>
