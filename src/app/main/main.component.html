@@ -1,78 +1,115 @@
-<div class="change">
-    <label class="input">
-      Seleccionar Imagen
-      <input type="file" required (change)="onImageChange($event)">
-    </label>
-    <img *ngIf="datos.imageUrl" [src]="datos.imageUrl" alt="Imagen seleccionada" class="img">
-  </div>
-  
+<div class="parent">
+  <div class="div1"> </div>
 
-<div class="datos">
-    <div class="input-row">
-      <label class="input-titulo">
-        <input type="text" [(ngModel)]="datos.titulo" placeholder=" " />
-        <span>Titulo</span>
+  
+  <div class="div2">
+
+    <div class="producto-container">
+     
+      <button (click)="toggleMenu()" class="menu-btn">Selecciona tu Plataforma ▼</button>
+    
+     
+      <div *ngIf="menuVisible" class="menu">
+        <ul>
+          <li class="ps" (click)="seleccionarOpcion('opcion1')">PlayStation</li>
+          <li class="x" (click)="seleccionarOpcion('opcion2')">Xbox</li>
+          <li class="switch" (click)="seleccionarOpcion('opcion3')">Switch</li>
+        </ul>
+      </div>
+    
+    
+
+    <div class="change">
+      <label class="input">
+        Seleccionar Imagen
+        <input type="file" required (change)="onImageChange($event)">
       </label>
-      <label class="input-container">
-        <input type="text" [(ngModel)]="datos.precio" placeholder=" " />
-        <span>Precio</span>
-      </label>
-      <label class="input-container">
-        <input type="number" [(ngModel)]="datos.cantidad" placeholder=" "  />
-        <span>0</span>
+      <img *ngIf="datos.imageUrl" [src]="datos.imageUrl" alt="Imagen seleccionada" class="img">
+    </div>
+    
+  
+    <div class="datos">
+      <div class="input-row">
+        <label class="input-titulo">
+          <input type="text" [(ngModel)]="datos.titulo" placeholder="Titulo" />
+        </label>
+        <label class="input-container">
+          <input type="text" [(ngModel)]="datos.precio" placeholder="Precio" />
+        </label>
+        <label class="input-container">
+          <input type="number" [(ngModel)]="datos.cantidad" placeholder="0 " />
+        </label>
+      </div>
+    </div>
+    
+    <div>
+      <label class="input-desc">
+        <input type="text" [(ngModel)]="datos.descripcion" placeholder="Descripcion " />
       </label>
     </div>
+    
+  
+  <div class="btn">
+      <button (click)="cancelarProducto()" class="btn-container">Cancelar</button>
+      <button (click)="agregarProducto()" class="btn-container"> Agregar</button>
   </div>
+    
   
   <div>
-    <label class="input-desc">
-      <input 
-        type="text" [(ngModel)]="datos.descripcion" placeholder=" " />
-      <span>Descripción</span>
-    </label>  
+      <h1 class="games">Juegos Seleccionados</h1>
+  </div>
+    
+  <hr>
+      
+  <table *ngIf="productos.length > 0">
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>
+              <img [src]="producto.imageUrl" alt="Imagen Producto" class="img-tabla">
+          </td>
+  
+          <td class="celda-informacion">
+              <div class="info-tabla">
+                <div class="titulo">{{ producto.titulo }}</div>
+                <div class="descripcion">{{ producto.descripcion }}</div>
+              </div>
+            </td>
+  
+  
+  
+            <td>
+              <div class="cantidad-wrapper">
+                <span class="cantidad-label">Cantidad:</span>
+                <div class="cantidad-container">
+                  <input type="text" [(ngModel)]="producto.cantidad" readonly>
+                  <div class="botones-cantidad">
+                    <button (click)="modificarCantidad(producto, 1)">+</button>
+                    <button (click)="modificarCantidad(producto, -1)">-</button>
+                  </div>
+                </div>
+              </div>
+            </td>
+            
+            
+            <td>
+              <label class="input-tabla">
+                <input type="text" [value]="producto.precio" readonly>
+              </label>
+            </td>
+            
+            <td class="dn">
+              <span [ngClass]="{'disponible': producto.cantidad > 0, 'no-disponible': producto.cantidad === 0}">
+                {{ producto.cantidad > 0 ? 'Disponible' : 'No Disponible' }}
+              </span>
+            </td>
+            
+      </tbody>
+    </table>
+  
   </div>
 
-<div class="btn">
-    <button (click)="cancelarProducto()" class="btn-container">Cancelar</button>
-    <button (click)="agregarProducto()" class="btn-container"> Agregar</button>
+  <div class="div3"> </div>
+
 </div>
-  
-
-<div>
-    <h1 class="games">Juegos Seleccionados</h1>
-</div>
-  
-<hr>
-    
-<table *ngIf="productos.length > 0">
-
-    <tbody>
-      <tr *ngFor="let producto of productos">
-        <td>
-            <img [src]="producto.imageUrl" alt="Imagen Producto" class="img-tabla">
-        </td>
-
-        <td class="celda-informacion">
-            <div class="info-tabla">
-              <div class="titulo">{{ producto.titulo }}</div>
-              <div class="descripcion">{{ producto.descripcion }}</div>
-            </div>
-          </td>
 
 
-
-        <td>Cantidad: 
-            <label class="input-tabla">
-                <input type="text" [(ngModel)]="datos.cantidad" placeholder="{{ producto.cantidad }}">
-            </label>
-        </td>
-        <td>
-            <label class="input-tabla">
-                <input type="text" [(ngModel)]="datos.precio" placeholder="${{ producto.precio }}">
-            </label>
-        </td>
-        <label>Disponible</label>
- 
-      </tr>
-    </tbody>
-  </table>

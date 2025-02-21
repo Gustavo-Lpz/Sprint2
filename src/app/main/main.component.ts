@@ -48,20 +48,67 @@ export class MainComponent {
 
   agregarProducto() {
     if (this.datos.titulo && this.datos.precio && this.datos.cantidad && this.datos.descripcion && this.datos.imageUrl) {
-      this.productos.push({ ...this.datos }); 
-      this.datos = {
-        imageUrl: '',
-        titulo: '',
-        precio: '',
-        cantidad: '',
-        descripcion: ''
+      const nuevoProducto = {
+        imageUrl: this.datos.imageUrl,
+        titulo: this.datos.titulo,
+        precio: this.datos.precio,
+        cantidad: this.datos.cantidad, 
+        descripcion: this.datos.descripcion
       };
+      this.productos.push(nuevoProducto);
+      this.limpiarDatos(); 
     } else {
       alert('Complete todos los campos');
     }
   }
 
+  modificarCantidad(producto: any, cambio: number) {
+    let nuevaCantidad = producto.cantidad + cambio;
+    if (nuevaCantidad >= 0) {  
+      producto.cantidad = nuevaCantidad;
+    }
+  }
 
+  
+  menuVisible = false;
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;  // Cambia el estado del menú
+  }
+
+  // Función para manejar la selección de una opción
+  seleccionarOpcion(opcion: string) {
+    this.menuVisible = false;  // Oculta el menú después de seleccionar una opción
+    this.actualizarCampos(opcion);  // Actualiza los campos de acuerdo con la opción seleccionada
+  }
+
+  // Función para actualizar los campos de acuerdo con la opción seleccionada
+  actualizarCampos(opcion: string) {
+    switch (opcion) {
+      case 'opcion1':
+        this.datos.imageUrl = '';
+        this.datos.titulo = '';
+        this.datos.precio = '';
+        this.datos.cantidad = '';
+        this.datos.descripcion = '';
+        break;
+      case 'opcion2':
+        this.datos.imageUrl = '';
+        this.datos.titulo = '';
+        this.datos.precio = '';
+        this.datos.cantidad = '';
+        this.datos.descripcion = '';
+        break;
+      case 'opcion3':
+        this.datos.imageUrl = '';
+        this.datos.titulo = '';
+        this.datos.precio = '';
+        this.datos.cantidad = '';
+        this.datos.descripcion = '';
+        break;
+      default:
+        break;
+    }
+  }
 
 
 } /* Fin*/

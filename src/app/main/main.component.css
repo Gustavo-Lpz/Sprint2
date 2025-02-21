@@ -1,3 +1,123 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+    
+.div1 { 
+    grid-area: 1 / 1 / 2 / 6; 
+    border-bottom: 1px black solid;
+}
+.div2 { 
+    grid-area: 2 / 1 / 6 / 5; 
+}
+.div3 { 
+    grid-area: 2 / 5 / 6 / 6; 
+    border-left: 1px black solid;
+}
+
+
+.producto-container {
+    position: relative;
+    padding-top: 20px;
+  }
+  
+  .menu-btn {
+    padding: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .menu-btn:hover {
+    cursor: pointer;
+    color: red;
+  }
+  
+  .menu {
+    position: absolute;
+    top: 0px;  /* Ajusta la posición para que aparezca encima */
+    left: 0;
+    background-color: #cec5c5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 55px;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .ps {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+  }
+
+  .ps:hover {
+    cursor: pointer;
+    color: blue;
+  }
+  
+  .x {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+  }
+
+  .x:hover{
+    cursor: pointer;
+    color: green;
+  }
+
+  .switch {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+  }
+
+  .switch:hover {
+    cursor: pointer;
+    color: red;
+  }
+
+  .menu ul li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .menu ul li:hover {
+    background-color: #ffffff;
+  }
+  
+  .producto-details {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+
+
+
 .change {
     display: flex;
     align-items: center;
@@ -16,7 +136,7 @@
   
 .input {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background-color: rgb(219, 217, 217); 
     color: black;
     font-size: 16px;
@@ -47,7 +167,7 @@
 
 .input-row {
     display: flex;
-    gap: 20px; 
+    gap: 50px; 
 }
 
 .input-titulo input {
@@ -64,7 +184,7 @@
     position: relative;
     display: inline-flex;
     flex-direction: column-reverse;
-    width: 350px; 
+    width: 250px; 
 }
   
 .input-titulo input {
@@ -129,7 +249,7 @@
     position: relative;
     display: inline-flex;
     flex-direction: column-reverse;
-    width: 150px; 
+    width: 100px; 
 }
   
 .input-container input {
@@ -169,7 +289,7 @@
     position: relative;
     display: inline-flex;
     flex-direction: column-reverse;
-    width: 1400px; 
+    width: 120vh; 
 }
   
 .input-desc input {
@@ -216,6 +336,13 @@
     border: 1px solid #ccc;
     color: gray;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-container:hover{
+    background-color: red;
+    color: black;
+    font-weight: bold;
 }
 
 .img-tabla {
@@ -244,7 +371,7 @@ tr {
   }
 
   .celda-informacion {
-    padding-right: 850px;
+    padding-right: 550px;
   }
 
 .input-desc input {
@@ -263,6 +390,7 @@ tr {
     flex-direction: column-reverse;
     width: 90px; 
     margin-right: 20px;
+    margin-top: -1px;
 }
   
 .input-tabla input {
@@ -273,6 +401,7 @@ tr {
     outline: none;
     background-color: rgb(248, 248, 248);
     transition: border-color 0.3s ease;
+    font-weight: bold;
 }
   
 .input-tabla input:focus {
@@ -288,3 +417,76 @@ tr {
     pointer-events: none;
     font-weight: bold;
 }
+
+
+.cantidad-container {
+    position: relative;
+    width: 80px;  /* Ajusta el ancho según tu diseño */
+    display: flex;
+    padding-top: -20px;
+    text-align: left;
+  }
+  
+  .cantidad-container input {
+    width: 100%;
+    text-align: center;
+    padding-right: 10px; 
+    height: 38px; 
+    background-color: rgb(248, 248, 248);
+    border: none; 
+    height: 20px;
+  }
+  
+  
+  .botones-cantidad {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column; 
+    gap: 2px; 
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    margin-top: 2px;
+  }
+  
+  .botones-cantidad button {
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    padding: 0;
+    border: none;
+    background-color: rgb(248, 248, 248);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .botones-cantidad button:hover {
+    background-color: red;
+  }
+  
+  .cantidad-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre "Cantidad:" y el input */
+  }
+
+  .cantidad-container:hover .botones-cantidad {
+    opacity: 1; /* Mostrar los botones cuando se pase el cursor */
+  }
+
+  .disponible {
+    color: green;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .no-disponible {
+    color: red;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
