@@ -3,12 +3,12 @@
 
   
   <div class="div2">
-
+    <div class="div3"> 
     <div class="producto-container">
      
       <button (click)="toggleMenu()" class="menu-btn">Selecciona tu Plataforma ▼</button>
     
-     
+  
       <div *ngIf="menuVisible" class="menu">
         <ul>
           <li class="ps" (click)="seleccionarOpcion('opcion1')">PlayStation</li>
@@ -58,7 +58,7 @@
   <div>
       <h1 class="games">Juegos Seleccionados</h1>
   </div>
-    
+
   <hr>
       
   <table *ngIf="productos.length > 0">
@@ -78,7 +78,7 @@
   
   
             <td>
-              <div class="cantidad-wrapper">
+              <div class="cantidad">
                 <span class="cantidad-label">Cantidad:</span>
                 <div class="cantidad-container">
                   <input type="text" [(ngModel)]="producto.cantidad" readonly>
@@ -108,7 +108,7 @@
   
   </div>
 
-  <div class="div3"> </div>
+  </div>
 
 </div>
 

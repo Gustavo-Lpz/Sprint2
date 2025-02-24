@@ -14,8 +14,8 @@
     grid-area: 2 / 1 / 6 / 5; 
 }
 .div3 { 
-    grid-area: 2 / 5 / 6 / 6; 
-    border-left: 1px black solid;
+    grid-area: 2 / 5 / 5 / 6; 
+    border-right: 1px black solid;
 }
 
 
@@ -468,7 +468,7 @@ tr {
     background-color: red;
   }
   
-  .cantidad-wrapper {
+  .cantidad {
     display: flex;
     align-items: center;
     gap: 10px; /* Espacio entre "Cantidad:" y el input */
@@ -490,3 +490,6 @@ tr {
     padding: 10px;
   }
   
+  .dn {
+    margin-top: 12px;
+  }

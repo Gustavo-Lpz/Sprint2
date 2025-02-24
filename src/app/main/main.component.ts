@@ -33,7 +33,7 @@ export class MainComponent {
     this.limpiarDatos();
   }
 
-  private limpiarDatos() {
+  limpiarDatos() {
     this.datos = {
       imageUrl: '',
       titulo: '',
@@ -72,16 +72,15 @@ export class MainComponent {
   
   menuVisible = false;
   toggleMenu() {
-    this.menuVisible = !this.menuVisible;  // Cambia el estado del menú
+    this.menuVisible = !this.menuVisible;  // Cambia el estado del menú de visible a invisible
   }
 
-  // Función para manejar la selección de una opción
   seleccionarOpcion(opcion: string) {
     this.menuVisible = false;  // Oculta el menú después de seleccionar una opción
     this.actualizarCampos(opcion);  // Actualiza los campos de acuerdo con la opción seleccionada
   }
 
-  // Función para actualizar los campos de acuerdo con la opción seleccionada
+  // Función para actualizar los campos de acuerdo con la opción
   actualizarCampos(opcion: string) {
     switch (opcion) {
       case 'opcion1':
